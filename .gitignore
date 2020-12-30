@@ -1,0 +1,11 @@
+build
+composer.lock
+docs
+vendor
+coverage
+.idea/
+.phpstorm.meta.php
+_ide_helper.php
+phpunit.xml
+.phpunit.result.cache
+

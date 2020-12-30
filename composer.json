@@ -1,0 +1,51 @@
+{
+    "name": "hju-group/convertkit",
+    "description": "",
+    "keywords": [
+        "hju-group",
+        "convertkit"
+    ],
+    "homepage": "https://github.com/hju-group/convertkit",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+    ],
+    "require": {
+        "php": "^7.1",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "HJUGroup\\ConvertKit\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HJUGroup\\ConvertKit\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HJUGroup\\ConvertKit\\ConvertKitServiceProvider"
+            ],
+            "aliases": {
+                "Convertkit": "HJUGroup\\ConvertKit\\ConvertKitFacade"
+            }
+        }
+    }
+}
