@@ -65,6 +65,34 @@ class ConvertKit
     }
 
     /**
+     * @param string $email
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function unsubscribeSubscriber(string $email)
+    {
+        if (! config('convertkit.enabled')) {
+            return;
+        }
+
+        $result = $this->client->put('unsubscribe', [
+            'form_params' => [
+                'api_secret' => $this->api_secret,
+                'email'      => $email,
+            ],
+        ]);
+
+        $json = json_decode($result->getBody(), true);
+
+        if (empty($json)) {
+            throw new \Exception('JSON response not valid or no forms found');
+        }
+
+        if ($json['email'] != $email) {
+            throw new \Exception('Email address not found');
+        }
+    }
+
+    /**
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Exception
